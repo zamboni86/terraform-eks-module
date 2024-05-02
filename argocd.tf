@@ -12,3 +12,7 @@ resource "helm_release" "argocd" {
   namespace  = "argocd"
   depends_on = [module.eks]
 }
+
+resource "kubectl_manifest" "argocd" {
+    yaml_body = file("${path.module}/argocd.yaml")
+}
