@@ -1,3 +1,7 @@
+variable "account_number" {
+  default = "719386486510"
+}
+
 variable "region" {
   type = string
   default = "us-east-1"
