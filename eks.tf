@@ -64,11 +64,6 @@ module "eks" {
       desired_size = 3  
 
       instance_types = ["m5.large"]
-      
-      # Needed by the aws-ebs-csi-driver
-      iam_role_additional_policies = {
-        AmazonEBSCSIDriverPolicy = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
-      }
     }
     
   }
