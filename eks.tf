@@ -7,8 +7,8 @@ module "eks" {
 
   cluster_endpoint_public_access  = true
 
-  aws_auth_roles = "arn:aws:iam::719386486510:role/tf-project-codepipeline-role"
-  aws_auth_users = "arn:aws:iam::719386486510:user/zanoni.contreras"
+  aws_auth_roles = ["arn:aws:iam::719386486510:role/tf-project-codepipeline-role"]
+  aws_auth_users = ["arn:aws:iam::719386486510:user/zanoni.contreras"]
 
   cluster_addons = {
     coredns = {
