@@ -3,7 +3,7 @@ module "eks" {
   version = "19.21.0"
 
   cluster_name    = "${var.env}-cluster"
-  cluster_version = "1.29"
+  cluster_version = "1.28"
 
   cluster_endpoint_public_access  = true
 
@@ -64,6 +64,7 @@ module "eks" {
       desired_size = 3  
 
       instance_types = ["m5.large"]
+      capacity_type  = "ONDEMAND"
     }
     
   }
