@@ -2,7 +2,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "20.8.5"
 
-  cluster_name    = "example-cluster"
+  cluster_name    = "${var.env}-cluster"
   cluster_version = "1.29"
 
   cluster_endpoint_public_access  = true
@@ -54,10 +54,7 @@ module "eks" {
   # To add the current caller identity as an administrator
   enable_cluster_creator_admin_permissions = true
 
-  tags = {
-    environment = "dev"
-    terraform   = "true"
-  }
+  tags = local.tags
 
   depends_on = [
     module.vpc
