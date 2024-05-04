@@ -11,6 +11,9 @@ spec:
     name: in-cluster
   project: default
   source:
-    path: /
+    path: ./
     repoURL: https://github.com/zamboni86/argocd-example-apps
     targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true

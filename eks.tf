@@ -17,6 +17,12 @@ module "eks" {
     vpc-cni = {
       most_recent = true
     }
+    coredns = {
+      most_recent = true
+    }
+    aws-ebs-csi-driver = { 
+      most_recent = true 
+    }
   }
 
   vpc_id                   = module.vpc.vpc_id
@@ -30,12 +36,18 @@ module "eks" {
 
   eks_managed_node_groups = {
     example = {
-      min_size     = 1
+      min_size     = 3
       max_size     = 10
-      desired_size = 1
+      desired_size = 3  
 
       instance_types = ["m5.large"]
+      
+      # Needed by the aws-ebs-csi-driver
+      iam_role_additional_policies = {
+        AmazonEBSCSIDriverPolicy = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+      }
     }
+    
   }
 
   # Cluster access entry
