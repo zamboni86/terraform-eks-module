@@ -1,6 +1,6 @@
 locals {
     tags = merge({
         terraform = "true"
-        environment = "dev"
+        environment = var.env
     }, var.tags)
 }
