@@ -54,7 +54,7 @@ module "eks" {
 
   access_entries = {
     # One access entry with a policy associated
-    example = {
+    codepipeline  = {
       kubernetes_groups = ["admin"]
       principal_arn     = "arn:aws:iam::${var.account_number}:role/${var.env}-eks-codepipeline-role"
 
@@ -65,7 +65,9 @@ module "eks" {
             type       = "cluster"
           }
         }
-      },
+      }
+    },
+    user = {
       kubernetes_groups = ["admin"]
       principal_arn     = "arn:aws:iam::${var.account_number}:user/zanoni.contreras"
 
