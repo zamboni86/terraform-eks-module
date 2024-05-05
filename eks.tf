@@ -55,28 +55,20 @@ module "eks" {
   access_entries = {
     # One access entry with a policy associated
     example = {
-      kubernetes_groups = []
+      kubernetes_groups = ["admin"]
       principal_arn     = "arn:aws:iam::${var.account_number}:role/tf-project-codepipeline-role"
 
       policy_associations = {
         example = {
           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-          access_scope = {
-            namespaces = []
-            type       = "cluster"
-          }
         }
       },
-      kubernetes_groups = []
+      kubernetes_groups = ["admin"]
       principal_arn     = "arn:aws:iam::${var.account_number}:user/zanoni.contreras"
 
       policy_associations = {
         example = {
           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-          access_scope = {
-            namespaces = []
-            type       = "cluster"
-          }
         }
       }
     }
