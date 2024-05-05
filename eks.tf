@@ -66,6 +66,18 @@ module "eks" {
             type       = "cluster"
           }
         }
+      },
+      kubernetes_groups = []
+      principal_arn     = "arn:aws:iam::${var.account_number}:user/zanoni.contreras"
+
+      policy_associations = {
+        example = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            namespaces = []
+            type       = "cluster"
+          }
+        }
       }
     }
   }
