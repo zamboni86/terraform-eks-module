@@ -1,16 +1,9 @@
-resource "kubernetes_namespace" "argocd" {
-  metadata {
-    name = "argocd"
-  }
-
-  depends_on = [module.eks]
-}
-
 resource "helm_release" "argocd" {
   name       = "argocd"
   chart      = "https://github.com/argoproj/argo-helm/releases/download/argo-cd-5.36.11/argo-cd-5.36.11.tgz"
   namespace  = "argocd"
-  depends_on = [module.eks, kubernetes_namespace.argocd]
+  create_namespace = true
+  depends_on = [module.eks]
 }
 
 resource "kubectl_manifest" "argocd" {
